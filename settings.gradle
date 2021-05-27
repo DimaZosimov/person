@@ -2,4 +2,6 @@ rootProject.name = 'com.person'
 include 'model'
 include 'dao'
 include 'service'
+include 'service-api'
+include 'rest'
 
