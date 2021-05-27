@@ -5,8 +5,10 @@ import com.person.model.Person;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class PersonServiceImpl implements PersonService {
 
   private PersonDaoDataJpa personDaoDataJpa;
@@ -15,11 +17,13 @@ public class PersonServiceImpl implements PersonService {
     this.personDaoDataJpa = personDaoDataJpa;
   }
 
+  @Transactional(readOnly = true)
   @Override
   public List<Person> findAll() {
     return null;
   }
 
+  @Transactional(readOnly = true)
   @Override
   public Optional<Person> findById(Integer id) {
     return Optional.empty();
