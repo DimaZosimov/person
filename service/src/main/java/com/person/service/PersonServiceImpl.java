@@ -1,46 +1,43 @@
 package com.person.service;
 
+import com.person.dao.PersonDao;
 import com.person.dao.PersonDaoDataJpa;
 import com.person.model.Person;
-import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
+@Service("personServiceImpl")
 @Transactional
-public class PersonServiceImpl implements PersonService {
+public class PersonServiceImpl implements PersonService{
 
-  private PersonDaoDataJpa personDaoDataJpa;
+  private final PersonDao personDaoDataJpa;
 
-  public PersonServiceImpl(PersonDaoDataJpa personDaoDataJpa) {
+  @Autowired
+  public PersonServiceImpl(PersonDao personDaoDataJpa) {
     this.personDaoDataJpa = personDaoDataJpa;
   }
 
   @Transactional(readOnly = true)
   @Override
-  public List<Person> findAll() {
-    return null;
+  public Iterable<Person> findAll() {
+    return personDaoDataJpa.findAll();
   }
 
   @Transactional(readOnly = true)
   @Override
   public Optional<Person> findById(Integer id) {
-    return Optional.empty();
+    return personDaoDataJpa.findById(id);
   }
 
   @Override
   public Person save(Person person) {
-    return null;
-  }
-
-  @Override
-  public Person update(Person person) {
-    return null;
+    return personDaoDataJpa.save(person);
   }
 
   @Override
   public void delete(Person person) {
-
+    personDaoDataJpa.delete(person);
   }
 }

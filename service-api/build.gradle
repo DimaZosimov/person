@@ -1,18 +1,3 @@
-plugins {
-    id 'java'
-}
-
-group 'com.person'
-version '0.0.1-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation project(':model')
-}
-
-test {
-    useJUnitPlatform()
 }

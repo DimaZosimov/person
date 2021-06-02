@@ -1,22 +1,12 @@
-plugins {
-    id 'java'
-}
-
-group 'com.person'
-version '0.0.1-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation project(':model')
     implementation project(':service-api')
     implementation project(':dao')
-    implementation 'org.springframework:spring-context:5.3.7'
-    implementation 'org.springframework:spring-tx:5.3.7'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation 'org.springframework:spring-context'
+    implementation 'org.springframework:spring-tx'
+    implementation 'org.springframework.data:spring-data-jpa'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 test {

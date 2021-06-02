@@ -1,19 +1,5 @@
-plugins {
-    id 'java'
-}
-
-group 'com.person'
-version '0.0.1-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.20'
-    implementation 'org.hibernate:hibernate-core:5.4.31.Final'
-}
-
-test {
-    useJUnitPlatform()
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.hibernate:hibernate-core'
 }

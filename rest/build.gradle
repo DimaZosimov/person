@@ -1,23 +1,9 @@
-plugins {
-    id 'java'
-}
-
-group 'com.person'
-version '0.0.1-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation project(':service-api')
     implementation project(':model')
-    implementation 'org.springframework:spring-web:5.3.7'
-    implementation 'org.springframework:spring-webmvc:5.3.7'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-}
-
-test {
-    useJUnitPlatform()
+    implementation project(':service')
+    implementation project(':dao')
+    implementation project(':testdb')
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 }

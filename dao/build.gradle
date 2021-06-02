@@ -1,19 +1,4 @@
-plugins {
-    id 'java'
-}
-
-group 'com.person'
-version '0.0.1-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation project(':model')
-    implementation 'org.springframework.data:spring-data-jpa:2.5.1'
-}
-
-test {
-    useJUnitPlatform()
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
