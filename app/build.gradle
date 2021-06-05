@@ -1,3 +1,9 @@
+apply plugin: 'application'
+
+application {
+    mainClass = 'com.person.rest.RestApplication'
+}
+
 dependencies {
     implementation project(':service-api')
     implementation project(':model')

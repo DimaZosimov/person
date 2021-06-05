@@ -2,9 +2,9 @@ create sequence hibernate_sequence start with 1 increment by 1;
 
 create table person (
   id integer not null default hibernate_sequence.nextval,
-  created date not null,
-  modified date not null,
-  name varchar(255) not null,
+  created date,
+  modified date,
+  name varchar(255),
   primary key (id)
 );
 
