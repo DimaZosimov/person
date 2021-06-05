@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.SequenceGenerator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +18,9 @@ import lombok.NoArgsConstructor;
 public class Person {
 
   @Id
- // @GeneratedValue(strategy = GenerationType.AUTO)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence",
+  allocationSize = 1, initialValue = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   private Integer id;
   private String name;
   @Column(insertable = true, updatable = false)

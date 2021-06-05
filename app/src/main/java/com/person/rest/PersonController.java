@@ -3,7 +3,6 @@ package com.person.rest;
 import com.person.model.Person;
 import com.person.model.PersonBuilder;
 import com.person.service.PersonService;
-import com.person.service.PersonServiceImpl;
 import java.net.URI;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -12,10 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PersonServiceImpl implements PersonService{
 
-  private final PersonDao personDaoDataJpa;
+  private final PersonDaoDataJpa personDaoDataJpa;
 
   @Autowired
-  public PersonServiceImpl(PersonDao personDaoDataJpa) {
+  public PersonServiceImpl(PersonDaoDataJpa personDaoDataJpa) {
     this.personDaoDataJpa = personDaoDataJpa;
   }
 
