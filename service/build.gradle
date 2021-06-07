@@ -2,11 +2,11 @@ dependencies {
     implementation project(':model')
     implementation project(':service-api')
     implementation project(':dao')
+    implementation project(':testdb')
     implementation 'org.springframework:spring-context'
     implementation 'org.springframework:spring-tx'
     implementation 'org.springframework.data:spring-data-jpa'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {

@@ -33,6 +33,9 @@ public class PersonServiceImpl implements PersonService{
 
   @Override
   public Person save(Person person) {
+    if(person.getId() != null) {
+      person.onUpdate();
+    }
     return personDaoDataJpa.save(person);
   }
 
