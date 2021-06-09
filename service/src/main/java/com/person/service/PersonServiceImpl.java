@@ -1,6 +1,5 @@
 package com.person.service;
 
-import com.person.dao.PersonDao;
 import com.person.dao.PersonDaoDataJpa;
 import com.person.model.Person;
 import java.util.Optional;
@@ -10,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service("personServiceImpl")
 @Transactional
-public class PersonServiceImpl implements PersonService{
+public class PersonServiceImpl implements PersonService {
 
   private final PersonDaoDataJpa personDaoDataJpa;
 
@@ -33,7 +32,7 @@ public class PersonServiceImpl implements PersonService{
 
   @Override
   public Person save(Person person) {
-    if(person.getId() != null) {
+    if (person.getId() != null) {
       person.onUpdate();
     }
     return personDaoDataJpa.save(person);

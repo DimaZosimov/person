@@ -6,30 +6,29 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import com.person.dao.PersonDaoDataJpa;
 import com.person.model.Person;
 import com.person.model.PersonBuilder;
-import com.person.testdb.TestDBConfig;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.ContextConfiguration;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@SpringBootTest
-@ContextConfiguration(classes = {TestDBConfig.class})
-@ComponentScan(basePackages = {"com.person.testdb"})
-@Import({PersonServiceImpl.class, PersonDaoDataJpa.class})
+/**
+ * Simple unit tests use JUnit5 and Mockito and don`t use Spring. This test uses only one level
+ * layer.
+ */
+
+@ExtendWith(MockitoExtension.class)
 public class PersonServiceImplTest {
 
-  @MockBean
+  @Mock
   private PersonDaoDataJpa personDaoDataJpa;
 
-  @Autowired
+  @InjectMocks
   private PersonServiceImpl personService;
 
   @Test
@@ -52,7 +51,7 @@ public class PersonServiceImplTest {
 
   @Test
   public void shouldReturnPersonById() {
-    Person person  = PersonBuilder.create().withId(1).withName("Bill").build();
+    Person person = PersonBuilder.create().withId(1).withName("Bill").build();
     Optional<Person> opt = Optional.of(person);
     Mockito.when(personDaoDataJpa.findById(anyInt())).thenReturn(opt);
     Optional<Person> foundPerson = personService.findById(1);
@@ -97,6 +96,4 @@ public class PersonServiceImplTest {
     Mockito.verify(personDaoDataJpa).delete(any());
     Mockito.verifyNoMoreInteractions(personDaoDataJpa);
   }
-
-
 }

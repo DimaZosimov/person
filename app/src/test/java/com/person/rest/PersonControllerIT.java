@@ -27,6 +27,15 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * annotation @SpringBootTest allows writing tests against the whole application context.
+ * <p>
+ * What's part of the Spring Test Context: everything, TestRestTemplate (if you start the embedded
+ * servlet container).
+ * <p>
+ * What's not part of the Spring Test Context: –
+ */
+
 @SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
@@ -135,10 +144,10 @@ public class PersonControllerIT {
     MockHttpServletResponse response = mockMvc.perform(MockMvcRequestBuilders.post(PERSON_URL)
         .contentType(MediaType.APPLICATION_JSON)
         .content(json))
-        .andExpect(MockMvcResultMatchers.status().is4xxClientError())
+        .andExpect(MockMvcResultMatchers.status().isBadRequest())
         .andReturn().getResponse();
     Assertions.assertNotNull(response);
-    Assertions.assertEquals(401, response.getStatus());
+    Assertions.assertEquals(400, response.getStatus());
   }
 
   @Test
@@ -180,7 +189,7 @@ public class PersonControllerIT {
     Assertions.assertEquals(id, savedPerson.getId());
     Assertions.assertEquals(person.getName(), savedPerson.getName());
     Assertions.assertEquals(LocalDate.now(), savedPerson.getModified());
-    Assertions.assertNotEquals(LocalDate.now(), savedPerson.getCreated());
+    Assertions.assertEquals(person.getCreated(), savedPerson.getCreated());
   }
 
   //TODO: validate request person
