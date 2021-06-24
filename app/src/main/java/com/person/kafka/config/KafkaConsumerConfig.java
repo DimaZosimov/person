@@ -26,6 +26,9 @@ public class KafkaConsumerConfig {
   @Value("${spring.kafka.consumer.group-id}")
   private String kafkaGroupId;
 
+  @Value("${spring.kafka.consumer.auto-offset-reset}")
+  private String autoOffsetReset;
+
   @Bean
   public Map<String, Object> consumerConfigs() {
     Map<String, Object> props = new HashMap<>();
@@ -33,7 +36,7 @@ public class KafkaConsumerConfig {
     props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, IntegerDeserializer.class);
     props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     props.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaGroupId);
-    props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+    props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetReset);
     return props;
   }
 

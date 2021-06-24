@@ -1,0 +1,21 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f58367d30ad, pid=8504, tid=8520
+#
+# JRE version: OpenJDK Runtime Environment (14.0.2+12) (build 14.0.2+12-Ubuntu-120.04)
+# Java VM: OpenJDK 64-Bit Server VM (14.0.2+12-Ubuntu-120.04, mixed mode, sharing, tiered, compressed oops, g1 gc, linux-amd64)
+# Problematic frame:
+# C  [libjimage.so+0x30ad]
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P %E" (or dumping to /home/general_tuliy/Projects/person/core.8504)
+#
+# If you would like to submit a bug report, please visit:
+#   Unknown
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -agentlib:jdwp=transport=dt_socket,server=n,suspend=y,address=127.0.0.1:37053 -Dfile.encoding=UTF-8 -Duser.country=RU -Duser.language=ru -Duser.variant com.person.rest.RestApplication
+
+Host: 

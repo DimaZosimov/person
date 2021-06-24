@@ -5,4 +5,5 @@ include 'model'
 include 'service'
 include 'service-api'
 include 'testdb'
+include 'kafka'
 

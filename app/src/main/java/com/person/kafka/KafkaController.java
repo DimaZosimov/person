@@ -8,10 +8,11 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@RestController
+@RestController
 @RequestMapping("msg")
 public class KafkaController {
 
@@ -23,7 +24,7 @@ public class KafkaController {
   }
 
   @PostMapping
-  public void sendOrder(Integer msgKey, Person person) {
+  public void sendOrder(Integer msgKey, @RequestBody Person person) {
     //Слушатель для просмотра результатов отправки сообщения
     ListenableFuture<SendResult<Integer, Person>> future = kafkaTemplate
         .send("msg", msgKey, person);
@@ -33,8 +34,8 @@ public class KafkaController {
 
   @KafkaListener(topics = "msg", containerFactory = "singleFactory")
   public void orderListener(ConsumerRecord<Integer, Person> record) {
-    System.out.println(record.partition());
-    System.out.println(record.key());
-    System.out.println(record.value());
+    System.out.println("Partition: " + record.partition());
+    System.out.println("Key: " + record.key());
+    System.out.println("Value: " + record.value());
   }
 }
